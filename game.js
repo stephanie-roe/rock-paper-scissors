@@ -5,19 +5,23 @@ var spicy = ["rock", "paper", "scissors", "lizard", "alien"];
 var choices = [];
 
 class Game {
-  constructor(type) {
+  constructor() {
     this.players = [playerOne, computer],
-    this.type = type
+    this.type = mild || spicy
   }
   checkGameBoard() {
     //store in an array what the two choices were for each round
   }
   checkGameType() {
-
     // verify which version of the game is being played
   }
   checkForWin() {
     // game logic if they are not strictly equal to one another
+    // if (this.players[0].choice === "scissors" || "lizard" && this.players[1].choice === "rock") {
+    //   this.players[0].wins ++
+    //   return `${this.players[0]} wins`
+    // }
+    // } else if (playerOne.choice === "rock" || "alien"  )
   }
   checkForDraw() {
     // if (playerOne.choice !== computer.choice)

@@ -1,12 +1,4 @@
-// FIRST INTERACTION
-//
-// User clicks on the game, and then an new instance of the game class is created. Playerone and cpomputer, the two instances of the player class, could be an array of players within the game class.
-//
-// When a game option is clicked, the center area of the screen will shift from the button options to the choose your fighter options (inner HTMl). When one of the weapon buttons is clicked by the user, the computer will choose a random value and the checkforwin or checkfordraw functions will be invoked, and the screen will display what the result of the match is.
-//
-// Check for win and check for draw will be functions with conditionals that represent the game logic and will return a response of [player] wins or its a draw.
-
-//VARIABLES-----------------------------------------------------------------------
+//VARIABLES----------------------------------------------------------------
 // wins as a global variable, somehow connected to the player.wins value.
 var chooseYourFighter = document.querySelector(".choose-your-fighter");
 var gamePrompt = document.querySelector(".game-prompt");
@@ -17,49 +9,60 @@ var spicyBox = document.querySelector("#spicy");
 var changeGameButton = document.querySelector(".change-game-button");
 var rockIcon = document.querySelector(".rock");
 
+var newGame = new Game;
 
-//EVENT LISTENERS-----------------------------------------------------------------
-//clicking on the game type + change game button
+//EVENT LISTENERS----------------------------------------------------------
 mildBox.addEventListener("click", displayMild);
 spicyBox.addEventListener("click", displaySpicy);
 changeGameButton.addEventListener("click", changeGame);
-//clicking on the different icons
+
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon rock") {
     choices[0] = "rock"
     playerOne.choice = "rock"
+    chooseComputer()
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon paper") {
     choices[0] = "paper"
     playerOne.choice = "paper"
+    chooseComputer()
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon scissors") {
     choices[0] = "scissors"
     playerOne.choice = "scissors"
-
+    chooseComputer()
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon lizard") {
     choices[0] = "lizard"
     playerOne.choice = "lizard"
+    chooseComputer()
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon alien") {
     choices[0] = "alien"
     playerOne.choice = "alien"
+    chooseComputer()
   }
 });
 //FUNCTIONS-----------------------------------------------------------------------
-//display who wins based off of results from game.checkforwin/ checkfordraw.
-// get random for computer
-// display choose your fighter screen
-// display the change game button
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+};
+
+function chooseComputer() {
+  if (choices[0] !== undefined) {
+    computer.choice = newGame.type[getRandomIndex(newGame.type)]
+    choices.push(computer.choice)
+  }
+};
+
 function displayMild() {
   chooseYourFighter.innerHTML = "";
   chooseYourFighter.innerHTML += `<img class="fighter-icon rock" src="./assets/003-cave.png" alt="rock icon">
@@ -70,8 +73,7 @@ function displayMild() {
   gamePrompt.classList.add("hidden");
   gameOptions.classList.add("hidden");
   changeGameButton.classList.remove("hidden");
-  // var mildGame = new Game("mild")
-  // mildGame.type = "mild";
+  newGame.type = mild;
 };
 
 function displaySpicy() {
@@ -84,9 +86,11 @@ function displaySpicy() {
   gamePrompt.classList.add("hidden");
   gameOptions.classList.add("hidden");
   changeGameButton.classList.remove("hidden");
+  newGame.type = spicy;
 };
 
 function changeGame() {
+  choices = []
   chooseYourFighter.classList.add("hidden");
   fighterPrompt.classList.add("hidden");
   gamePrompt.classList.remove("hidden");
@@ -94,4 +98,8 @@ function changeGame() {
   changeGameButton.classList.add("hidden");
 };
 
-// now I need to add an event listener to each of these fighter icons. When any of the icons are picked, it will be assigned to player.choice and then a function will be invoked for the computer to randomly choose from the array corresponding to the game type. These two selections will be pushed into an array of choices, which will be referenced in the methods within the game class that decide if the game has a winner or is a draw. Within the win function, it should increment the score of the winner by one.
+//display who wins based off of results from game.checkforwin/ checkfordraw. This function will be invoked at the end of the event target listener for each option.
+
+// These two selections are being pushed into an array of choices, which will be referenced in the methods within the game class that decide if the game has a winner or is a draw. Within the win function, it should increment the score of the winner by one.
+
+// Check for win and check for draw will be functions with conditionals that represent the game logic and will return a response of [player] wins or its a draw.
