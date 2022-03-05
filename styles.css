@@ -9,6 +9,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.hidden {
+	display: none;
+}
+
 /* HEADER---------------------------------------------------- */
 header {
   display: flex;
