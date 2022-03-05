@@ -8,8 +8,10 @@ var mildBox = document.querySelector("#mild");
 var spicyBox = document.querySelector("#spicy");
 var changeGameButton = document.querySelector(".change-game-button");
 var rockIcon = document.querySelector(".rock");
-
-var newGame = new Game;
+var newGame;
+var choices = [];
+computer = new Player("computer");
+playerOne = new Player("playerOne");
 
 //EVENT LISTENERS----------------------------------------------------------
 mildBox.addEventListener("click", displayMild);
@@ -18,37 +20,42 @@ changeGameButton.addEventListener("click", changeGame);
 
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon rock") {
-    choices[0] = "rock"
-    playerOne.choice = "rock"
-    chooseComputer()
+    choices[0] = "rock";
+    playerOne.choice = "rock";
+    chooseComputer();
+    newGame.checkForWin();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon paper") {
-    choices[0] = "paper"
-    playerOne.choice = "paper"
-    chooseComputer()
+    choices[0] = "paper";
+    playerOne.choice = "paper";
+    chooseComputer();
+    newGame.checkForWin();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon scissors") {
-    choices[0] = "scissors"
-    playerOne.choice = "scissors"
-    chooseComputer()
+    choices[0] = "scissors";
+    playerOne.choice = "scissors";
+    chooseComputer();
+    newGame.checkForWin();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon lizard") {
-    choices[0] = "lizard"
-    playerOne.choice = "lizard"
-    chooseComputer()
+    choices[0] = "lizard";
+    playerOne.choice = "lizard";
+    chooseComputer();
+    newGame.checkForWin();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon alien") {
-    choices[0] = "alien"
-    playerOne.choice = "alien"
-    chooseComputer()
+    choices[0] = "alien";
+    playerOne.choice = "alien";
+    chooseComputer();
+    newGame.checkForWin();
   }
 });
 //FUNCTIONS-----------------------------------------------------------------------
@@ -58,12 +65,13 @@ function getRandomIndex(array) {
 
 function chooseComputer() {
   if (choices[0] !== undefined) {
-    computer.choice = newGame.type[getRandomIndex(newGame.type)]
-    choices.push(computer.choice)
+    computer.choice = newGame.type[getRandomIndex(newGame.type)];
+    choices.push(computer.choice);
   }
 };
 
 function displayMild() {
+  startGame();
   chooseYourFighter.innerHTML = "";
   chooseYourFighter.innerHTML += `<img class="fighter-icon rock" src="./assets/003-cave.png" alt="rock icon">
   <img class="fighter-icon paper" src="./assets/001-documents.png" alt="paper icon">
@@ -73,10 +81,10 @@ function displayMild() {
   gamePrompt.classList.add("hidden");
   gameOptions.classList.add("hidden");
   changeGameButton.classList.remove("hidden");
-  newGame.type = mild;
 };
 
 function displaySpicy() {
+  startGame();
   chooseYourFighter.innerHTML = "";
   displayMild();
   chooseYourFighter.innerHTML += `<img class="fighter-icon lizard" src="./assets/010-lizard.png" alt="lizard icon">
@@ -86,11 +94,10 @@ function displaySpicy() {
   gamePrompt.classList.add("hidden");
   gameOptions.classList.add("hidden");
   changeGameButton.classList.remove("hidden");
-  newGame.type = spicy;
 };
 
 function changeGame() {
-  choices = []
+  choices = [];
   chooseYourFighter.classList.add("hidden");
   fighterPrompt.classList.add("hidden");
   gamePrompt.classList.remove("hidden");
@@ -98,6 +105,9 @@ function changeGame() {
   changeGameButton.classList.add("hidden");
 };
 
+function startGame() {
+  newGame = new Game();
+};
 //display who wins based off of results from game.checkforwin/ checkfordraw. This function will be invoked at the end of the event target listener for each option.
 
 // These two selections are being pushed into an array of choices, which will be referenced in the methods within the game class that decide if the game has a winner or is a draw. Within the win function, it should increment the score of the winner by one.

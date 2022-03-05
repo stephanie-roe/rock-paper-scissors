@@ -1,9 +1,13 @@
 class Player {
-  constructor(name, choice, game) {
+  constructor(name) {
     this.name = name;
+    this.choice;
     this.wins = 0;
+  } setChoice(choice, game) {
     if (this.name === "playerOne") {
       this.choice = choice;
+    } else if (this.name === "computer") {
+      this.choice = game.type[getRandomIndex(game.type)]
     }
   }
   // savesWinsToStorage() {
