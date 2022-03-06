@@ -1,6 +1,6 @@
 # Rock, Paper, Scissors
 
-![rock paper scissors logo]("./004-rock-paper-scissors.png")
+![Gif of rock paper scissors]("https://media.giphy.com/media/JQAXhJMw2WbKWYjn8g/giphy.gif")
 
 ### Overview
 This is a web application that allows the user to play two different versions of rock, paper, scissors against the computer. Using 5 weeks of learnings encompassing HTML, CSS and JavaScript, I was able to accomplish all functionalities without bugs and build a user-friendly, interactive experience.
@@ -16,7 +16,7 @@ This is a web application that allows the user to play two different versions of
 5. See you changes in the browser by running `open index.html` in your terminal.
 
 ### Technologies
-HTML | CSS | Javascript
+**HTML | CSS | Javascript**
 
  - Upon page load, the user is presented with two options, mild and spicy, which represent the two variations of the game.
  - Depending on which version the user selects, they will be able to choose from an array of "fighters". When the user selects one of the choices, the computer generates a randomized choice.
