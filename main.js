@@ -27,6 +27,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     chooseComputer();
     newGame.checkForWin();
     displayResults();
+    setTimeout(playAgain, 2500);
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -36,6 +37,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     chooseComputer();
     newGame.checkForWin();
     displayResults();
+    setTimeout(playAgain, 2500);
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -45,6 +47,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     chooseComputer();
     newGame.checkForWin();
     displayResults();
+    setTimeout(playAgain, 2500);
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -54,6 +57,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     chooseComputer();
     newGame.checkForWin();
     displayResults();
+    setTimeout(playAgain, 2500);
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -63,6 +67,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     chooseComputer();
     newGame.checkForWin();
     displayResults();
+    setTimeout(playAgain, 2500);
   }
 });
 //FUNCTIONS-----------------------------------------------------------------------
@@ -160,9 +165,9 @@ function displayResults() {
 };
 
 function playAgain() {
-  results.classList.add("hidden");
-  changeGame()
-}
+  newGame.resetGame();
+  results.classList.add("hidden")
+};
 
 // These two selections are being pushed into an array of choices, which will be referenced in the methods within the game class that decide if the game has a winner or is a draw. Within the win function, it should increment the score of the winner by one.
 
