@@ -1,6 +1,6 @@
 # Rock, Paper, Scissors
 
-![Gif of rock paper scissors]("https://media.giphy.com/media/JQAXhJMw2WbKWYjn8g/giphy.gif")
+![Gif of rock, paper, scissors](https://media.giphy.com/media/JQAXhJMw2WbKWYjn8g/giphy.gif)
 
 ### Overview
 This is a web application that allows the user to play two different versions of rock, paper, scissors against the computer. Using 5 weeks of learnings encompassing HTML, CSS and JavaScript, I was able to accomplish all functionalities without bugs and build a user-friendly, interactive experience.
