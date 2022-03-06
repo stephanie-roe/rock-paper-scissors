@@ -8,6 +8,8 @@ var mildBox = document.querySelector("#mild");
 var spicyBox = document.querySelector("#spicy");
 var changeGameButton = document.querySelector(".change-game-button");
 var rockIcon = document.querySelector(".rock");
+var results = document.querySelector(".results")
+var playAgainButton = document.querySelector(".play-again-button")
 var newGame;
 var choices = [];
 computer = new Player("computer");
@@ -17,6 +19,7 @@ playerOne = new Player("playerOne");
 mildBox.addEventListener("click", displayMild);
 spicyBox.addEventListener("click", displaySpicy);
 changeGameButton.addEventListener("click", changeGame);
+playAgainButton.addEventListener("click", playAgain);
 
 chooseYourFighter.addEventListener("click", function(event) {
   if (event.target.className === "fighter-icon rock") {
@@ -24,6 +27,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     playerOne.choice = "rock";
     chooseComputer();
     newGame.checkForWin();
+    displayResults();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -32,6 +36,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     playerOne.choice = "paper";
     chooseComputer();
     newGame.checkForWin();
+    displayResults();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -40,6 +45,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     playerOne.choice = "scissors";
     chooseComputer();
     newGame.checkForWin();
+    displayResults();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -48,6 +54,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     playerOne.choice = "lizard";
     chooseComputer();
     newGame.checkForWin();
+    displayResults();
   }
 });
 chooseYourFighter.addEventListener("click", function(event) {
@@ -56,6 +63,7 @@ chooseYourFighter.addEventListener("click", function(event) {
     playerOne.choice = "alien";
     chooseComputer();
     newGame.checkForWin();
+    displayResults();
   }
 });
 //FUNCTIONS-----------------------------------------------------------------------
@@ -108,8 +116,59 @@ function changeGame() {
 function startGame() {
   newGame = new Game();
 };
-//display who wins based off of results from game.checkforwin/ checkfordraw. This function will be invoked at the end of the event target listener for each option.
+
+function displayDraw() {
+  results.innerHTML = "";
+  results.innerHTML += `<img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">
+  <h2>it's a draw</h2>
+  <img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">`
+  fighterPrompt.classList.add("hidden");
+  gamePrompt.classList.add("hidden");
+  results.classList.remove("hidden");
+  chooseYourFighter.classList.add("hidden");
+  changeGameButton.classList.add("hidden");
+  playAgainButton.classList.remove("hidden");
+};
+
+function displayWin() {
+  results.innerHTML = "";
+  if (newGame.checkForWin() === "player one wins") {
+    results.innerHTML += `<img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
+    <h2>player one wins</h2>
+    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
+    fighterPrompt.classList.add("hidden");
+    gamePrompt.classList.add("hidden");
+    results.classList.remove("hidden");
+    chooseYourFighter.classList.add("hidden");
+    changeGameButton.classList.add("hidden");
+    playAgainButton.classList.remove("hidden");
+  } else if (newGame.checkForWin() === "computer wins") {
+    results.innerHTML += `<img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
+    <h2>computer wins</h2>
+    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
+    fighterPrompt.classList.add("hidden");
+    gamePrompt.classList.add("hidden");
+    results.classList.remove("hidden");
+    chooseYourFighter.classList.add("hidden");
+    changeGameButton.classList.add("hidden");
+    playAgainButton.classList.remove("hidden");
+  }
+};
+
+function displayResults() {
+  if (newGame.checkForDraw()) {
+    displayDraw()
+  } else {
+    displayWin()
+  }
+};
+
+function playAgain() {
+  playAgainButton.classList.add("hidden");
+  results.classList.add("hidden");
+  changeGame()
+}
 
 // These two selections are being pushed into an array of choices, which will be referenced in the methods within the game class that decide if the game has a winner or is a draw. Within the win function, it should increment the score of the winner by one.
 
-// Check for win and check for draw will be functions with conditionals that represent the game logic and will return a response of [player] wins or its a draw.
+//next up- how do we get the player's score to update on the dom? It already is in the data model. Possibly another function using inner html or inner text and updating that element for either player.
