@@ -34,6 +34,7 @@ class Game {
     return false;
   }
   resetGame() {
+    // I tink the setTimeout goes here 
     // change game button, will create a new instance of the game class
   }
 };
