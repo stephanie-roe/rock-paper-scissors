@@ -11,7 +11,7 @@ var rockIcon = document.querySelector(".rock");
 var results = document.querySelector(".results")
 var playAgainButton = document.querySelector(".play-again-button")
 var newGame;
-var choices = [];
+// var choices = [];
 computer = new Player("computer");
 playerOne = new Player("playerOne");
 
@@ -21,73 +21,25 @@ spicyBox.addEventListener("click", displaySpicy);
 changeGameButton.addEventListener("click", changeGame);
 
 chooseYourFighter.addEventListener("click", function(event) {
-  if (event.target.className === "fighter-icon rock") {
-    choices[0] = "rock";
-    playerOne.choice = "rock";
-    chooseComputer();
-    newGame.checkForWin();
-    displayResults();
-    setTimeout(playAgain, 2500);
-  }
-});
-chooseYourFighter.addEventListener("click", function(event) {
-  if (event.target.className === "fighter-icon paper") {
-    choices[0] = "paper";
-    playerOne.choice = "paper";
-    chooseComputer();
-    newGame.checkForWin();
-    displayResults();
-    setTimeout(playAgain, 2500);
-  }
-});
-chooseYourFighter.addEventListener("click", function(event) {
-  if (event.target.className === "fighter-icon scissors") {
-    choices[0] = "scissors";
-    playerOne.choice = "scissors";
-    chooseComputer();
-    newGame.checkForWin();
-    displayResults();
-    setTimeout(playAgain, 2500);
-  }
-});
-chooseYourFighter.addEventListener("click", function(event) {
-  if (event.target.className === "fighter-icon lizard") {
-    choices[0] = "lizard";
-    playerOne.choice = "lizard";
-    chooseComputer();
-    newGame.checkForWin();
-    displayResults();
-    setTimeout(playAgain, 2500);
-  }
-});
-chooseYourFighter.addEventListener("click", function(event) {
-  if (event.target.className === "fighter-icon alien") {
-    choices[0] = "alien";
-    playerOne.choice = "alien";
-    chooseComputer();
-    newGame.checkForWin();
-    displayResults();
-    setTimeout(playAgain, 2500);
-  }
-});
+  playerOne.choice = event.target.className;
+  playerOne.fighterIcon = newGame.playerOne.icons[playerOne.choice];
+  computer.takeTurnComputer(newGame);
+  computer.fighterIcon = newGame.computer.icons[computer.choice];
+  newGame.checkForWin();
+  displayResults();
+  setTimeout(playAgain, 2000);
+})
 //FUNCTIONS-----------------------------------------------------------------------
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 };
 
-function chooseComputer() {
-  if (choices[0] !== undefined) {
-    computer.choice = newGame.type[getRandomIndex(newGame.type)];
-    choices.push(computer.choice);
-  }
-};
-
 function displayMild() {
   startGame();
   chooseYourFighter.innerHTML = "";
-  chooseYourFighter.innerHTML += `<img class="fighter-icon rock" src="./assets/003-cave.png" alt="rock icon">
-  <img class="fighter-icon paper" src="./assets/001-documents.png" alt="paper icon">
-  <img class="fighter-icon scissors" src="./assets/002-scissors.png" alt="scissors icon">`;
+  chooseYourFighter.innerHTML += `<img class="rock" src="./assets/003-cave.png" alt="rock icon">
+  <img class="paper" src="./assets/001-documents.png" alt="paper icon">
+  <img class="scissors" src="./assets/002-scissors.png" alt="scissors icon">`;
   chooseYourFighter.classList.remove("hidden");
   fighterPrompt.classList.remove("hidden");
   gamePrompt.classList.add("hidden");
@@ -99,8 +51,8 @@ function displaySpicy() {
   startGame();
   chooseYourFighter.innerHTML = "";
   displayMild();
-  chooseYourFighter.innerHTML += `<img class="fighter-icon lizard" src="./assets/010-lizard.png" alt="lizard icon">
-  <img class="fighter-icon alien" src="./assets/011-alien.png" alt="alien icon">`;
+  chooseYourFighter.innerHTML += `<img class="lizard" src="./assets/010-lizard.png" alt="lizard icon">
+  <img class="alien" src="./assets/011-alien.png" alt="alien icon">`;
   chooseYourFighter.classList.remove("hidden");
   fighterPrompt.classList.remove("hidden");
   gamePrompt.classList.add("hidden");
@@ -109,7 +61,6 @@ function displaySpicy() {
 };
 
 function changeGame() {
-  choices = [];
   chooseYourFighter.classList.add("hidden");
   fighterPrompt.classList.add("hidden");
   gamePrompt.classList.remove("hidden");
@@ -139,6 +90,7 @@ function displayWin() {
     results.innerHTML += `<img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
     <h2>player one wins</h2>
     <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
+    playerOne.wins ++
     fighterPrompt.classList.add("hidden");
     gamePrompt.classList.add("hidden");
     results.classList.remove("hidden");
@@ -148,6 +100,7 @@ function displayWin() {
     results.innerHTML += `<img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
     <h2>computer wins</h2>
     <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
+    computer.wins ++
     fighterPrompt.classList.add("hidden");
     gamePrompt.classList.add("hidden");
     results.classList.remove("hidden");
@@ -159,14 +112,19 @@ function displayWin() {
 function displayResults() {
   if (newGame.checkForDraw()) {
     displayDraw()
+    results.innerHTML += playerOne.fighterIcon;
+    results.innerHTML += computer.fighterIcon;
   } else {
     displayWin()
+    results.innerHTML += playerOne.fighterIcon;
+    results.innerHTML += computer.fighterIcon;
   }
 };
 
 function playAgain() {
   newGame.resetGame();
-  results.classList.add("hidden")
+  results.classList.add("hidden");
+  fighterPrompt.classList.remove("hidden");
 };
 
 // These two selections are being pushed into an array of choices, which will be referenced in the methods within the game class that decide if the game has a winner or is a draw. Within the win function, it should increment the score of the winner by one.

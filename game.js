@@ -3,7 +3,9 @@ var spicy = ["rock", "paper", "scissors", "lizard", "alien"];
 
 class Game {
   constructor() {
-    this.players = [playerOne, computer],
+    // this.players = [playerOne, computer],
+    this.playerOne = playerOne,
+    this.computer = computer,
     this.type = mild || spicy
   }
   checkGameBoard() {
@@ -20,10 +22,10 @@ class Game {
       (playerOne.choice === "scissors" && computer.choice === "paper" || computer.choice === "lizard") ||
       (playerOne.choice === "lizard" && computer.choice === "paper" || computer.choice === "alien") ||
       (playerOne.choice === "alien" && computer.choice === "scissors" || computer.choice === "rock")) {
-      playerOne.wins ++;
+      // playerOne.wins ++;
       return "player one wins";
     } else {
-      computer.wins ++;
+      // computer.wins ++;
       return "computer wins";
     }
   }
@@ -34,8 +36,6 @@ class Game {
     return false;
   }
   resetGame() {
-    // I tink the setTimeout uses this method
-    // change game button, will create a new instance of the game class
     chooseYourFighter.classList.remove("hidden");
     changeGameButton.classList.remove("hidden");
   }
