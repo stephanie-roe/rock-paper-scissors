@@ -9,16 +9,19 @@ var spicyBox = document.querySelector("#spicy");
 var changeGameButton = document.querySelector(".change-game-button");
 var rockIcon = document.querySelector(".rock");
 var results = document.querySelector(".results")
-var playAgainButton = document.querySelector(".play-again-button")
+var playAgainButton = document.querySelector(".play-again-button");
 var newGame;
+var playerOneWins = document.querySelector("#playerOneWins");
+var computerWins = document.querySelector("#computerWins")
 // var choices = [];
-computer = new Player("computer");
-playerOne = new Player("playerOne");
+computer = new Player("computer", `<img class="player-icon" src="./assets/006-brain.png" alt="brain">`);
+playerOne = new Player("playerOne", `<img class="player-icon" src="./assets/007-desktop.png" alt="computer">`);
 
 //EVENT LISTENERS----------------------------------------------------------
 mildBox.addEventListener("click", displayMild);
 spicyBox.addEventListener("click", displaySpicy);
 changeGameButton.addEventListener("click", changeGame);
+
 
 chooseYourFighter.addEventListener("click", function(event) {
   playerOne.choice = event.target.className;
@@ -91,6 +94,7 @@ function displayWin() {
     <h2>player one wins</h2>
     <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
     playerOne.wins ++
+    playerOneWins.innerHTML = `wins: ${playerOne.wins}`
     fighterPrompt.classList.add("hidden");
     gamePrompt.classList.add("hidden");
     results.classList.remove("hidden");
@@ -101,6 +105,7 @@ function displayWin() {
     <h2>computer wins</h2>
     <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
     computer.wins ++
+    computerWins.innerHTML = `wins: ${computer.wins}`
     fighterPrompt.classList.add("hidden");
     gamePrompt.classList.add("hidden");
     results.classList.remove("hidden");
