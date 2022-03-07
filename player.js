@@ -1,25 +1,34 @@
 class Player {
   constructor(name) {
     this.name = name;
+    // this.token;
     this.choice;
+    this.fighterIcon;
     this.wins = 0;
-  } setChoice(choice, game) {
-    if (this.name === "playerOne") {
-      this.choice = choice;
-    } else if (this.name === "computer") {
-      this.choice = game.type[getRandomIndex(game.type)]
+    // this.fighter;
+    this.icons = {
+      rock: `<img class="rock" src="./assets/003-cave.png" alt="rock icon">`,
+      paper: `<img class="paper" src="./assets/001-documents.png" alt="paper icon">`,
+      scissors: `<img class="scissors" src="./assets/002-scissors.png" alt="scissors icon">`,
+      lizard: `<img class="lizard" src="./assets/010-lizard.png" alt="lizard icon">`,
+      alien: `<img class="alien" src="./assets/011-alien.png" alt="alien icon">`}
+  }
+  savesWinsToStorage() {
+    // increment win based on the outcome of the game
+  }
+  retrieveWinsFromStorage() {
+    // maybe store wins as a variable externally and then refernce that somehow
+    // timeout feature ???
+  }
+  takeTurnPlayerOne() {
+    return this.choice;
+    // if (this.name === "playerOne") {
+    //   this.choice = choice;
+    //   choices.push(this.choice);
+  }
+  takeTurnComputer(newGame) {
+    if (this.name === "computer") {
+      this.choice = newGame.type[getRandomIndex(newGame.type)];
     }
   }
-  // savesWinsToStorage() {
-  //   // increment win based on the outcome of the game
-  // }
-  // retrieveWinsFromStorage() {
-  //   // maybe store wins as a variable externally and then refernce that somehow
-  //   // timeout feature ???
-  // }
-  // takeTurn() {
-    // be invoked in the choose your fighter screen when one of the icons is clicked. (player one)
-    // be invoked to choose a random option based on that the name of the player is.
-    //conditionals here.
-  // }
 };
