@@ -1,13 +1,13 @@
 /* UNIVERSAL STYLING ---------------------------------------- */
 * {
-  font-family: 'Be Vietnam Pro', sans-serif;
   background-color: #FFFBF3;
+  font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 .hidden {
@@ -16,48 +16,49 @@ body {
 
 /* HEADER---------------------------------------------------- */
 header {
+  align-items: center;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
   height: 20vh;
+  justify-content: space-between;
   margin: 0;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 
 h1 {
-  font-weight: 600;
   font-size: 48px;
+  font-weight: 600;
   padding: 5px 40px 5px 40px;
 }
 
 .rock-paper-scissors-logo {
-  width: 100px;
   height: 100px;
   padding: 5px 40px 5px 40px;
+  width: 100px;
 }
 
 /*  MAIN---------------------------------------------------- */
 main {
   display: flex;
   flex-direction: row;
+  height: 80vh;
   justify-content: space-between;
   padding: 5px 30px 5px 30px;
-  height: 80vh;
 }
+
 /* ASIDES---------------------------------------------------- */
 .player-aside {
-  width: 20vw;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  width: 20vw;
 }
 
 .player-icon {
-  width: 60px;
   height: 60px;
+  width: 60px;
 }
 
 .player-name {
@@ -66,51 +67,50 @@ main {
 }
 
 .player-icon-and-name {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 30px 5px 10px 5px;
   font-size: 20px;
+  justify-content: space-evenly;
+  margin: 30px 5px 10px 5px;
 }
 
 /* CENTER---------------------------------------------------- */
 h2 {
-  font-weight: 400;
-  font-size: 20px;
-  text-align: center;
   font-size: 24px;
+  font-weight: 400;
   margin: 20px 5px 10px 5px;
+  text-align: center;
 }
 
 .center {
-  width: 60vw;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  width: 60vw;
 }
 /* CHOOSE YOUR GAME---------------------------------------------- */
 .game-type {
+  align-items: center;
+  background-color: #96BE8C;
+  border-radius: 35px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 35px;
-  width: 350px;
   height: 250px;
+  justify-content: flex-start;
   margin: 20px 5px 20px 5px;
-  background-color: #96BE8C;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  width: 350px;
 }
 
 .game-rules {
   background-color: #96BE8C;
-  width: 200px;
-  text-align: center;
-  margin: 3px 5px 3px 5px;
-  font-weight: 400;
   font-size: 15px;
+  font-weight: 400;
+  margin: 3px 5px 3px 5px;
+  text-align: center;
+  width: 200px;
 }
 
 .title {
@@ -120,13 +120,13 @@ h2 {
 
 /* GAME PLAY------------------------------------------------ */
 .change-game-button {
-  border: none;
-  width: 150px;
-  height: 50px;
-  border-radius: 35px;
   background-color: #96BE8C;
+  border: none;
+  border-radius: 35px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  height: 50px;
   margin: 50px 30px 30px 30px;
+  width: 150px;
 }
 
 .rock,
@@ -134,22 +134,22 @@ h2 {
 .scissors,
 .lizard,
 .alien {
-  width: 125px;
   height: 125px;
   margin: 15px;
+  width: 125px;
 }
 
 /* RESULTS--------------------------------------------------------------- */
 .results-icon {
-  width: 30px;
   height: 30px;
   margin: 10px;
+  width: 30px;
 }
 
 .results-announcement {
+  align-items: baseline;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: baseline;
   margin: 50px 30px 30px 30px;
 }

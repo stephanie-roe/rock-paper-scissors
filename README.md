@@ -24,7 +24,7 @@ This is a web application that allows the user to play two different versions of
  - While playing either version of the game, the user can select the change game button and return to the home screen. The score will not change if they toggle between games.
 
 
-[INSERT FUNCTIONALITY GIF HERE]
+ ![demo of functionalities](https://media.giphy.com/media/73tvu24JbBGb0kVQmS/giphy.gif)
 
 this is a quick demo of the above functionalities.
 
