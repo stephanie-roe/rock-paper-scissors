@@ -77,9 +77,11 @@ function startGame() {
 
 function displayDraw() {
   results.innerHTML = "";
-  results.innerHTML += `<img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">
+  results.innerHTML += `<div class="results-announcement">
+  <img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">
   <h2>it's a draw</h2>
-  <img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">`
+  <img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">
+  </div>`
   fighterPrompt.classList.add("hidden");
   gamePrompt.classList.add("hidden");
   results.classList.remove("hidden");
@@ -90,9 +92,11 @@ function displayDraw() {
 function displayWin() {
   results.innerHTML = "";
   if (newGame.checkForWin() === "player one wins") {
-    results.innerHTML += `<img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
+    results.innerHTML += `<div class="results-announcement">
+    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
     <h2>player one wins</h2>
-    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
+    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
+    </div>`
     playerOne.wins ++
     playerOneWins.innerHTML = `wins: ${playerOne.wins}`
     fighterPrompt.classList.add("hidden");
@@ -101,9 +105,11 @@ function displayWin() {
     chooseYourFighter.classList.add("hidden");
     changeGameButton.classList.add("hidden");
   } else if (newGame.checkForWin() === "computer wins") {
-    results.innerHTML += `<img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
+    results.innerHTML += `<div class="results-announcement">
+    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
     <h2>computer wins</h2>
-    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">`
+    <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
+    </div>`
     computer.wins ++
     computerWins.innerHTML = `wins: ${computer.wins}`
     fighterPrompt.classList.add("hidden");
