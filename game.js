@@ -3,16 +3,9 @@ var spicy = ["rock", "paper", "scissors", "lizard", "alien"];
 
 class Game {
   constructor() {
-    // this.players = [playerOne, computer],
     this.playerOne = playerOne,
     this.computer = computer,
     this.type = mild || spicy
-  }
-  checkGameBoard() {
-    //store in an array what the two choices were for each round
-  }
-  checkGameType() {
-    // verify which version of the game is being played
   }
   checkForWin() {
     if (this.checkForDraw()) {
@@ -22,10 +15,8 @@ class Game {
       (playerOne.choice === "scissors" && computer.choice === "paper" || computer.choice === "lizard") ||
       (playerOne.choice === "lizard" && computer.choice === "paper" || computer.choice === "alien") ||
       (playerOne.choice === "alien" && computer.choice === "scissors" || computer.choice === "rock")) {
-      // playerOne.wins ++;
       return "player one wins";
     } else {
-      // computer.wins ++;
       return "computer wins";
     }
   }
