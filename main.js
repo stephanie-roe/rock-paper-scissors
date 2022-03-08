@@ -4,7 +4,6 @@ playerOne = new Player("playerOne", `<img class="player-icon" src="./assets/007-
 
 var newGame;
 
-
 var gamePrompt = document.querySelector(".game-prompt");
 var gameOptions = document.querySelector(".game-options");
 var fighterPrompt = document.querySelector(".fighter-prompt");
@@ -22,7 +21,6 @@ mildBox.addEventListener("click", displayMild);
 spicyBox.addEventListener("click", displaySpicy);
 changeGameButton.addEventListener("click", changeGame);
 
-
 chooseYourFighter.addEventListener("click", function(event) {
   playerOne.choice = event.target.className;
   playerOne.fighterIcon = newGame.playerOne.icons[playerOne.choice];
@@ -30,8 +28,9 @@ chooseYourFighter.addEventListener("click", function(event) {
   computer.fighterIcon = newGame.computer.icons[computer.choice];
   newGame.checkForWin();
   displayResults();
-  setTimeout(playAgain, 2000);
+  setTimeout(playAgain, 1500);
 });
+
 //FUNCTIONS-----------------------------------------------------------------------
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -82,16 +81,12 @@ function displayDraw() {
   <h2>it's a draw</h2>
   <img class="results-icon" src="./assets/009-abstract-shape.png" alt="text decoration">
   </div>`;
-  fighterPrompt.classList.add("hidden");
-  gamePrompt.classList.add("hidden");
-  results.classList.remove("hidden");
-  chooseYourFighter.classList.add("hidden");
-  changeGameButton.classList.add("hidden");
+  displayResultsScreen();
 };
 
 function displayWin() {
   results.innerHTML = "";
-  if (newGame.checkForWin() === "player one wins") {
+  if (newGame.checkForWin() === "player one wins" && playerOne.fighterIcon !== undefined) {
     results.innerHTML += `<div class="results-announcement">
     <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
     <h2>player one wins</h2>
@@ -99,12 +94,8 @@ function displayWin() {
     </div>`;
     playerOne.wins ++;
     playerOneWins.innerHTML = `wins: ${playerOne.wins}`;
-    fighterPrompt.classList.add("hidden");
-    gamePrompt.classList.add("hidden");
-    results.classList.remove("hidden");
-    chooseYourFighter.classList.add("hidden");
-    changeGameButton.classList.add("hidden");
-  } else if (newGame.checkForWin() === "computer wins") {
+    displayResultsScreen();
+  } else if (newGame.checkForWin() === "computer wins" && playerOne.fighterIcon !== undefined) {
     results.innerHTML += `<div class="results-announcement">
     <img class="results-icon" src="./assets/008-magic.png" alt="text decoration">
     <h2>computer wins</h2>
@@ -112,23 +103,17 @@ function displayWin() {
     </div>`;
     computer.wins ++;
     computerWins.innerHTML = `wins: ${computer.wins}`;
-    fighterPrompt.classList.add("hidden");
-    gamePrompt.classList.add("hidden");
-    results.classList.remove("hidden");
-    chooseYourFighter.classList.add("hidden");
-    changeGameButton.classList.add("hidden");
+    displayResultsScreen();
   }
 };
 
 function displayResults() {
   if (newGame.checkForDraw()) {
     displayDraw();
-    results.innerHTML += playerOne.fighterIcon;
-    results.innerHTML += computer.fighterIcon;
+    displayFighterIcons();
   } else {
     displayWin();
-    results.innerHTML += playerOne.fighterIcon;
-    results.innerHTML += computer.fighterIcon;
+    displayFighterIcons();
   }
 };
 
@@ -136,4 +121,17 @@ function playAgain() {
   newGame.resetGame();
   results.classList.add("hidden");
   fighterPrompt.classList.remove("hidden");
+};
+
+function displayResultsScreen() {
+  fighterPrompt.classList.add("hidden");
+  gamePrompt.classList.add("hidden");
+  results.classList.remove("hidden");
+  chooseYourFighter.classList.add("hidden");
+  changeGameButton.classList.add("hidden");
+};
+
+function displayFighterIcons() {
+  results.innerHTML += playerOne.fighterIcon;
+  results.innerHTML += computer.fighterIcon;
 };

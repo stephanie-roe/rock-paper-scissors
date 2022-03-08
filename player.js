@@ -2,6 +2,8 @@ class Player {
   constructor(name, token) {
     this.name = name;
     this.token = token;
+    this.choice;
+    this.fighterIcon;
     this.wins = 0;
     this.icons = {
       rock: `<img class="rock" src="./assets/003-cave.png" alt="rock icon">`,
